@@ -1,0 +1,33 @@
+parameters:
+    git_dir: .
+    bin_dir: vendor/bin
+    hide_circumvention_tip: true
+    stop_on_failure: false
+    ignore_unstaged_changes: false
+    process_timeout: "%convention.process_timeout%"
+    convention.process_timeout: 60
+    convention.jsonlint_ignore_pattern: []
+    convention.xmllint_ignore_pattern: []
+    convention.yamllint_ignore_pattern: []
+    convention.phpcslint_ignore_pattern: []
+    convention.xlifflint_ignore_pattern: ["#typo3conf/l10n/(.*)#"]
+    tasks:
+        jsonlint:
+            detect_key_conflicts: true
+            ignore_patterns: "%convention.jsonlint_ignore_pattern%"
+#        phpcsfixer2:
+#            config: ~
+        phpcs:
+            standard: "PSR12"
+            warning_severity: 900000
+            tab_width: 4
+            report: full
+            ignore_patterns: "%convention.phpcslint_ignore_pattern%"
+        phplint: ~
+        xmllint:
+            ignore_patterns: "%convention.xmllint_ignore_pattern%"
+        yamllint:
+            ignore_patterns: "%convention.yamllint_ignore_pattern%"
+        xlifflint:
+            ignore_patterns: "%convention.xlifflint_ignore_pattern%"
+        securitychecker: ~
