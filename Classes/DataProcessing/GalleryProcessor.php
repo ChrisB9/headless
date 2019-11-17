@@ -119,7 +119,7 @@ class GalleryProcessor extends \TYPO3\CMS\Frontend\DataProcessing\GalleryProcess
             for ($column = 1; $column <= $this->galleryData['count']['columns']; $column++) {
                 $fileKey = (($row - 1) * $this->galleryData['count']['columns']) + $column - 1;
                 if ($this->fileObjects[$fileKey]['properties']['type'] === 'image') {
-                    $this->fileObjects[$fileKey] = $this->getFileUtility()->processFile($this->getImageService()->getImage($this->fileObjects[$fileKey]['properties']['fileReferenceUid'], null, true), $this->mediaDimensions[$fileKey] ?? []);
+                    $this->fileObjects[$fileKey] = $this->getFileUtility()->processFile($this->getImageService()->getImage($this->fileObjects[$fileKey]['properties']['originalUrl'], null, true), $this->mediaDimensions[$fileKey] ?? []);
                 }
                 if ($this->fileObjects[$fileKey]) {
                     $this->galleryData['rows'][$row]['columns'][$column] = $this->fileObjects[$fileKey];
